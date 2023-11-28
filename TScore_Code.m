@@ -4,7 +4,7 @@ clc; clear;
 
 % Asks the user what the BMD is pre-mission and the lenght of the mission
 BMD_Pre = input('What is the pre-mission BMD of the astronaut? ');
-time = input('What is the lenght of time in days of the mission? ');
+time = input('What is the length of time in days of the mission? ');
 
 % Calculate the BMD% loss
 BMD_Percent = ((-69) * exp(-0.0006371 * time) + 69);
