@@ -23,16 +23,25 @@ grid on
 % our formula for the rate of change of bone volume depending on myeloma is: BVC = -K1*OCa + K2*OBa (rate of formation minus rate of reapsortion)
 % OCa = number of  active osteoclasts (time dependent)
 % OBa = number of active osteoblasts (time dependent)
+%we set a time range of 1 to 1600 days (4 years)
 % K1 = Rate of reapsorption 
 % K2 = Rate of formation 
 % These rates change depending of how aggressive is the myeloma
 % For a high proliferation rate of the cancer:
-x = 0:50:1600
+
 %OBa rate 
-y1 = 5.618*10.^-10*x.^3 - 1.881*10.^-6*x.^2 + 0.002046*x + 0.9358
+y1 = 5.618*10.^-10*t.^3 - 1.881*10.^-6*t.^2 + 0.002046*t + 0.9358
 
 %OCa rate 
-y2 = 3.412*10.^-10*x.^3 - 1.416*10^-06*x.^2 + 0.001951*x + 1.1097
+y2 = 3.412*10.^-10*t.^3 - 1.416*10^-06*t.^2 + 0.001951*t + 1.1097
 
-% We compute the bone volume percentage loss:
-BVC% = abs(-2*y1 + 0.334*y2);
+% We compute the bone volume percentage loss due to mm:
+BVL = abs(-2*y1 + 0.334*y2);
+
+% integration of BMD loss with BV loss due to multiple myeloma:
+TotalBMD = (((-69) * exp(lambda * t) + 69) * -1 ) + BVL;
+
+plot(t,TotalBMD);
+title('BMD% change with both conditions integrated')
+xlabel("Time (days)")
+ylabel("Bone Mineral Density Change (%)")
