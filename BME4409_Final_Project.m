@@ -13,9 +13,9 @@ BMD = ((-69) * exp(lambda * t) + 69) * -1;
 plot(t, BMD, 'r', 'LineWidth', 1.5)
 hold on
 % Addition of vertical line to indicate length of round trip mars mission
-xline(1095, 'b')
-text(1095, max(BMD), 'Day 1095', 'VerticalAlignment', 'top', 'HorizontalAlignment', 'left', 'Color', 'b');
-title("BMD Percent Change From Microgravity Only")
+xline(1095, '--')
+text(1095, max(BMD), 'Day 1095', 'VerticalAlignment', 'top', 'HorizontalAlignment', 'left');
+title("BMD% Change From Microgravity Only")
 xlabel("Time (days)")
 ylabel("Bone Mineral Density Change (%)")
 grid on
