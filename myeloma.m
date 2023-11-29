@@ -31,11 +31,8 @@ BVL_high = abs(-2*y1_high + 0.334*y2_high);
 %OBa rate
 y1_2high = 7.954*10.^-10*t.^3 - 2.499*10.^-6*t.^2 + 0.002571*t + 0.7264
 
-
 %OCa rate
 y2_2high  = 2.171*10.^-10*t.^3 - 8.107*10.^-7*t.^2 + 0.001279*t + 1.133
-
- 
 
 % We compute the bone volume percentage loss due to mm:
 BVL_2high = abs(-2*y1_2high + 0.334*y2_2high);
