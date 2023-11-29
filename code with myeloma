@@ -1,0 +1,38 @@
+clc; clear;
+
+% variable t for time (days)
+t = 0:1:1500;
+
+% Decay Rate
+lambda = -0.0006371;
+
+% Equation to model bone mineral density loss from spaceflight
+BMD = ((-69) * exp(lambda * t) + 69) * -1;
+
+% Plot for intial bone mineral density loss
+plot(t, BMD, 'r', 'LineWidth', 1.5)
+hold on
+% Addition of vertical line to indicate length of round trip mars mission
+xline(1095, 'b')
+text(1095, max(BMD), 'Day 1095', 'VerticalAlignment', 'top', 'HorizontalAlignment', 'left', 'Color', 'b');
+title("BMD Percent Change From Microgravity Only")
+xlabel("Time (days)")
+ylabel("Bone Mineral Density Change (%)")
+grid on
+
+% our formula for the rate of change of bone volume depending on myeloma is: BVC = -K1*OCa + K2*OBa (rate of formation minus rate of reapsortion)
+% OCa = number of  active osteoclasts (time dependent)
+% OBa = number of active osteoblasts (time dependent)
+% K1 = Rate of reapsorption 
+% K2 = Rate of formation 
+% These rates change depending of how aggressive is the myeloma
+% For a high proliferation rate of the cancer:
+x = 0:50:1600
+%OBa rate 
+y1 = 5.618*10.^-10*x.^3 - 1.881*10.^-6*x.^2 + 0.002046*x + 0.9358
+
+%OCa rate 
+y2 = 3.412*10.^-10*x.^3 - 1.416*10^-06*x.^2 + 0.001951*x + 1.1097
+
+% We compute the bone volume percentage loss:
+BVC% = abs(-2*y1 + 0.334*y2);
