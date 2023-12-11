@@ -2,7 +2,7 @@ clc; clear;
 
 % Code used for calculating T Scores
 
-% Asks the user what the BMD is pre-mission and the lenght of the mission
+% Asks the user what the BMD is pre-mission and the length of the mission
 BMD_Pre = input('What is the pre-mission BMD of the astronaut? ');
 time = input('What is the length of time in days of the mission? ');
 
